@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mybday_app/home_page.dart';
 
-//# Curso de Flutter #23 - Stack
-//#https://www.youtube.com/watch?v=u8Mn_hQ6gy0
+//# Curso de Flutter #25 - Drawer
+//#https://www.youtube.com/watch?v=PoW-TWz-hGc
 
 class LoginPage extends StatefulWidget {
   @override
