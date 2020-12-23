@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'exemplos/app_widget.dart';
+import 'mybday_app.dart';
 
 main() {
-  runApp(AppWidget());
+  runApp(MybdayApp());
 }

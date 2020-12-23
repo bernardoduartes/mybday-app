@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mybday_app/app_controller.dart';
 
-import 'package:mybday_app/exemplos/home_page.dart';
-import 'package:mybday_app/exemplos/login_page.dart';
+import 'app_controller.dart';
+import 'home_page.dart';
 
-class AppWidget extends StatelessWidget {
+class MybdayApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: missing_return
@@ -19,8 +18,8 @@ class AppWidget extends StatelessWidget {
                   : Brightness.light),
           initialRoute: '/',
           routes: {
-            '/': (context) => LoginPage(),
-            '/home': (context) => HomePage(),
+            '/': (context) => HomePage(),
+            // '/home': (context) => HomePage(),
           },
         );
       },
