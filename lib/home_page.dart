@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'models/establishment_card.dart';
+import 'models/establishment.dart';
 
 class HomePage extends StatelessWidget {
   final _transactions = [
-    EstablishmentCard(
+    Establishment(
       id: 't1',
       title: 'Novo Tênis de Corrida',
       value: 310.76,
       date: DateTime.now(),
     ),
-    EstablishmentCard(
+    Establishment(
       id: 't2',
       title: 'Conta de Luz',
       value: 211.30,
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Despesas Pessoais'),
+        title: Text('Mybday busca'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
