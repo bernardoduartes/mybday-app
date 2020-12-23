@@ -12,10 +12,9 @@ class MybdayApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           theme: ThemeData(
-              primarySwatch: Colors.red,
-              brightness: AppController.instance.isDartTheme
-                  ? Brightness.dark
-                  : Brightness.light),
+            primarySwatch: Colors.blue,
+            brightness: Brightness.light,
+          ),
           initialRoute: '/',
           routes: {
             '/': (context) => HomePage(),
