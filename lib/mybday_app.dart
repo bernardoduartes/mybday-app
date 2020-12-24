@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_controller.dart';
 import 'home_page.dart';
+import 'pages/onboarding/onboarding_page.dart';
 
 class MybdayApp extends StatelessWidget {
   @override
@@ -17,8 +18,8 @@ class MybdayApp extends StatelessWidget {
           ),
           initialRoute: '/',
           routes: {
-            '/': (context) => HomePage(),
-            // '/home': (context) => HomePage(),
+            '/': (context) => OnboardingPage(),
+            '/home': (context) => HomePage(),
           },
         );
       },
