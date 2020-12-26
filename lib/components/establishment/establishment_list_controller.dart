@@ -23,66 +23,15 @@ class _EstablishmentListControllerState
 }
 
 List<Establishment> getEstablishmentList() {
-  return [
-    Establishment(
+  List<Establishment> list = new List<Establishment>();
+  for (var i = 0; i < 20; i++) {
+    list.add(Establishment(
       id: 't1',
       title: 'Novo Tênis de Corrida',
       value: 310.76,
       date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-  ];
+    ));
+  }
+
+  return list;
 }

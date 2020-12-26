@@ -10,7 +10,7 @@ class EstablishmentList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 500,
       child: ListView.builder(
         itemCount: establishments.length,
         itemBuilder: (ctx, index) {
