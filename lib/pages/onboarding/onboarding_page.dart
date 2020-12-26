@@ -65,7 +65,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           direction: Axis.vertical,
           children: [
             Flexible(
-              flex: 5,
+              flex: 3,
               child: PageView.builder(
                 controller: pageController,
                 itemCount: _paginas.length,
@@ -78,29 +78,23 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 },
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        for (int i = 0; i < 3; i++)
-                          if (i == currentPageValue) ...[
-                            pageIndicator(true)
-                          ] else
-                            pageIndicator(false),
-                      ],
-                    ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      for (int i = 0; i < 3; i++)
+                        if (i == currentPageValue) ...[pageIndicator(true)] else
+                          pageIndicator(false),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Expanded(
+            Flexible(
               flex: 1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -181,7 +175,7 @@ Widget mainView(image, title) {
       children: <Widget>[
         Image.asset(
           image,
-          fit: BoxFit.none,
+          fit: BoxFit.scaleDown,
         ),
         SizedBox(
           height: 15,
@@ -192,9 +186,10 @@ Widget mainView(image, title) {
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              color: Colors.purple,
-              fontWeight: FontWeight.bold,
-              fontSize: 14.0),
+            color: Colors.purple,
+            fontWeight: FontWeight.bold,
+            fontSize: 14.0,
+          ),
         ),
         Text(
           title,
