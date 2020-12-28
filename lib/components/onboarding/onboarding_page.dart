@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mybday_app/components/onboarding/onboarding_container.dart';
 import 'package:mybday_app/constants/app_assets.dart';
-import 'package:mybday_app/constants/app_colors.dart';
+
+import 'onboarding_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
   @override
@@ -15,25 +17,28 @@ class _OnboardingPageState extends State<OnboardingPage> {
   int currentPageValue = 0;
   String buttonText = 'SKIP';
 
-  final _paginas = [
-    mainView(
-        AppAssets.onboarding_image_1,
-        'It’s available in your favorite cities now'
-        'and thy wait! go and order'
-        'four favorite juices'),
-    mainView(
-        AppAssets.onboarding_image_1,
-        'It’s available in your favorite cities now'
-        'and thy wait! go and order'
-        'four favorite juices'),
-    mainView(
-        AppAssets.onboarding_image_1,
-        'It’s available in your favorite cities now'
-        'and thy wait! go and order'
-        'four favorite juices'),
-  ];
-
   PageController pageController;
+
+  final List<OnboardingContainer> _paginas = [
+    OnboardingContainer(
+      title: 'Comemore seu aniversário',
+      subTitle:
+          'Descubra os melhores lugares para comemorar essa data pra lá de especial.',
+      imagePath: AppAssets.onboarding1,
+    ),
+    OnboardingContainer(
+      title: 'Convide a sua turma inteira',
+      subTitle:
+          'Convide toda a sua turma para celebrar essa data juntinho de você',
+      imagePath: AppAssets.onboarding2,
+    ),
+    OnboardingContainer(
+      title: 'E aproveite essa data especial',
+      subTitle:
+          'Divirta-se muito e aproveite as melhores promoções dos seus restaurantes e bares favoritos',
+      imagePath: AppAssets.onboarding3,
+    ),
+  ];
 
   @override
   void initState() {
@@ -59,43 +64,43 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final availableHeight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
-      body: SafeArea(
-        child: Flex(
-          direction: Axis.vertical,
+      body: Container(
+        child: Column(
           children: [
-            Flexible(
-              flex: 3,
+            Container(
+              height: availableHeight * 0.7,
               child: PageView.builder(
                 controller: pageController,
                 itemCount: _paginas.length,
+                physics: BouncingScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
+                  print('_paginas $index');
                   return _paginas[index % _paginas.length];
                 },
-                physics: BouncingScrollPhysics(),
                 onPageChanged: (int page) {
                   _getChangedPageAndMoveBar(page);
                 },
               ),
             ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      for (int i = 0; i < 3; i++)
-                        if (i == currentPageValue) ...[pageIndicator(true)] else
-                          pageIndicator(false),
-                    ],
-                  ),
-                ),
-              ],
+            Container(
+              height: availableHeight * 0.05,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  for (int i = 0; i < _paginas.length; i++)
+                    if (i == currentPageValue) ...[
+                      OnboardingIndicator(true)
+                    ] else
+                      OnboardingIndicator(false),
+                ],
+              ),
             ),
-            Flexible(
-              flex: 1,
+            Container(
+              height: availableHeight * 0.25,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -146,63 +151,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 }
 
-Widget pageIndicator(bool isActive) {
-  return Container(
-    height: 10,
-    width: 10,
-    margin: EdgeInsets.only(left: 5, right: 5),
-    child: DecoratedBox(
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: isActive ? colorActive : colorInactive,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20.0),
-        ),
-        border: Border.all(
-          color: Colors.black26,
-          width: 1.0,
-        ),
-      ),
-    ),
-  );
-}
-
-Widget mainView(image, title) {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Image.asset(
-          image,
-          fit: BoxFit.scaleDown,
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          maxLines: 3,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: Colors.purple,
-            fontWeight: FontWeight.bold,
-            fontSize: 14.0,
-          ),
-        ),
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          maxLines: 3,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 10.0,
-          ),
-        ),
-      ],
-    ),
+Widget mainView(imagePath, title) {
+  return OnboardingContainer(
+    title: title,
+    imagePath: imagePath,
   );
 }
 
