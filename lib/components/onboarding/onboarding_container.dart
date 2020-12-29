@@ -17,7 +17,7 @@ class OnboardingContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.fromLTRB(30, 30, 30, 0),
+              margin: EdgeInsets.fromLTRB(30, 25, 30, 0),
               height: constraints.maxHeight * 0.60,
               child: Image.asset(
                 imagePath,

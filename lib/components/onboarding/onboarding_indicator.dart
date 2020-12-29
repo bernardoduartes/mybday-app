@@ -9,15 +9,15 @@ class OnboardingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 10,
-      width: 10,
-      margin: EdgeInsets.only(left: 5, right: 5),
+      height: 8,
+      width: 8,
+      margin: EdgeInsets.only(left: 6, right: 6),
       child: DecoratedBox(
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: _isActive ? colorActive : colorInactive,
           borderRadius: BorderRadius.all(
-            Radius.circular(20.0),
+            Radius.circular(16.0),
           ),
           border: Border.all(
             color: Colors.black26,

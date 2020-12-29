@@ -64,15 +64,30 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    final availableHeight =
-        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+    final appBar = AppBar(
+      title: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Mybday APP',
+            style: TextStyle(
+              fontSize: 20 * MediaQuery.of(context).textScaleFactor,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    //- MediaQuery.of(context).padding.top
+    final availableHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Container(
+        height: availableHeight,
         child: Column(
           children: [
             Container(
-              height: availableHeight * 0.75,
+              height: availableHeight * 0.70,
               child: PageView.builder(
                 controller: pageController,
                 itemCount: _paginas.length,
@@ -101,46 +116,55 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             ),
             Container(
-              height: availableHeight * 0.20,
+              height: availableHeight * 0.25,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  RaisedButton(
-                    color: Colors.red,
-                    textColor: Colors.white,
-                    padding: const EdgeInsets.all(8.0),
-                    child: new Text(
-                      'Próximo',
+                  Container(
+                    width: 200,
+                    child: RaisedButton(
+                      color: Colors.pink[400],
+                      textColor: Colors.white,
+                      child: new Text(
+                        'Continuar',
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(
+                          16.0,
+                        ),
+                        //side: BorderSide(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        if (currentPageValue + 1 < _paginas.length) {
+                          pageController.nextPage(
+                            duration: _kDuration,
+                            curve: _kCurve,
+                          );
+                          _getChangedPageAndMoveBar(++currentPageValue);
+                        } else {
+                          _callHomePage(context);
+                        }
+                      },
                     ),
-                    onPressed: () {
-                      if (currentPageValue + 1 < _paginas.length) {
-                        pageController.nextPage(
-                          duration: _kDuration,
-                          curve: _kCurve,
-                        );
-                        _getChangedPageAndMoveBar(++currentPageValue);
-                      } else {
-                        _callHomePage(context);
-                      }
-                    },
                   ),
-                  FlatButton(
-                    textColor: Colors.purple,
-                    padding: const EdgeInsets.all(8.0),
-                    child: new Text(
-                      buttonText,
+                  Container(
+                    child: FlatButton(
+                      textColor: Colors.purple,
+                      child: new Text(
+                        buttonText,
+                      ),
+                      onPressed: () {
+                        if (currentPageValue > _firstPageValue) {
+                          pageController.previousPage(
+                            duration: _kDuration,
+                            curve: _kCurve,
+                          );
+                          _getChangedPageAndMoveBar(--currentPageValue);
+                        } else {
+                          _callHomePage(context);
+                        }
+                      },
                     ),
-                    onPressed: () {
-                      if (currentPageValue > _firstPageValue) {
-                        pageController.previousPage(
-                          duration: _kDuration,
-                          curve: _kCurve,
-                        );
-                        _getChangedPageAndMoveBar(--currentPageValue);
-                      } else {
-                        _callHomePage(context);
-                      }
-                    },
                   ),
                 ],
               ),
