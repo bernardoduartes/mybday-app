@@ -24,7 +24,7 @@ class MybdayApp extends StatelessWidget {
             textTheme: ThemeData.light().textTheme.copyWith(
                   headline6: TextStyle(
                     fontFamily: 'Montserrat Alternates',
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                   button: TextStyle(
@@ -36,7 +36,7 @@ class MybdayApp extends StatelessWidget {
               textTheme: ThemeData.light().textTheme.copyWith(
                     headline6: TextStyle(
                       fontFamily: 'Montserrat',
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -29,7 +29,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     OnboardingContainer(
       title: 'Convide a sua turma inteira',
       subTitle:
-          'Convide toda a sua turma para celebrar essa data juntinho de você',
+          'Convide toda a sua turma para celebrar essa data juntinho de você!',
       imagePath: AppAssets.onboarding2,
     ),
     OnboardingContainer(
@@ -66,12 +66,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     final availableHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+
     return Scaffold(
       body: Container(
         child: Column(
           children: [
             Container(
-              height: availableHeight * 0.7,
+              height: availableHeight * 0.75,
               child: PageView.builder(
                 controller: pageController,
                 itemCount: _paginas.length,
@@ -100,13 +101,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             ),
             Container(
-              height: availableHeight * 0.25,
+              height: availableHeight * 0.20,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   RaisedButton(
-                    textColor: Colors.white,
                     color: Colors.red,
+                    textColor: Colors.white,
                     padding: const EdgeInsets.all(8.0),
                     child: new Text(
                       'Próximo',
