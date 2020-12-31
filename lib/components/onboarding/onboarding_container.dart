@@ -56,20 +56,17 @@ class OnboardingContainer extends StatelessWidget {
                 margin: EdgeInsets.fromLTRB(60, 5, 60, 0),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Flexible(
-                    fit: FlexFit.tight,
-                    child: Text(
-                      subTitle,
-                      textAlign: TextAlign.center,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        height: 1.5,
-                        fontSize: 16,
-                        color: slideDescription,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Montserrat Alternates',
-                      ),
+                  child: Text(
+                    subTitle,
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      height: 1.5,
+                      fontSize: 16,
+                      color: slideDescription,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat Alternates',
                     ),
                   ),
                 ),
