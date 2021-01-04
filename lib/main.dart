@@ -32,11 +32,11 @@ class MybdayApp extends StatelessWidget {
         textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(
                 fontFamily: 'Montserrat Alternates',
-                fontSize: 12,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
               subtitle1: TextStyle(
-                fontSize: 10,
+                fontSize: 14,
                 color: Colors.grey,
                 fontWeight: FontWeight.normal,
               ),

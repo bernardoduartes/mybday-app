@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mybday_app/models/establishment.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import '../../hotel_app_theme.dart';
 
@@ -50,7 +51,8 @@ class EstablishmentCard extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.favorite_border,
-                          color: HotelAppTheme.buildLightTheme().primaryColor,
+                          // color: HotelAppTheme.buildLightTheme().primaryColor,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -69,8 +71,8 @@ class EstablishmentCard extends StatelessWidget {
                   children: [
                     ClipOval(
                       child: Image(
-                        height: 32.0,
-                        width: 32.0,
+                        height: 42.0,
+                        width: 42.0,
                         fit: BoxFit.cover,
                         image: NetworkImage(establishment.image),
                       ),
@@ -99,6 +101,53 @@ class EstablishmentCard extends StatelessWidget {
                   "Japonesa # rodízio",
                   style: Theme.of(context).textTheme.subtitle1,
                 )
+              ],
+            ),
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'hotelData.subTxt',
+                style: TextStyle(
+                    fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+              ),
+              const SizedBox(
+                width: 4,
+              ),
+              Icon(
+                Icons.map,
+                size: 12,
+                color: HotelAppTheme.buildLightTheme().primaryColor,
+              ),
+              Expanded(
+                child: Text(
+                  '100 km to city',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Row(
+              children: <Widget>[
+                SmoothStarRating(
+                  allowHalfRating: true,
+                  starCount: 5,
+                  rating: 10.0,
+                  size: 20,
+                  color: HotelAppTheme.buildLightTheme().primaryColor,
+                  borderColor: HotelAppTheme.buildLightTheme().primaryColor,
+                ),
+                Text(
+                  ' 10 Reviews',
+                  style: TextStyle(
+                      fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                ),
               ],
             ),
           ),

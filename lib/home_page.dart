@@ -113,6 +113,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: availableHeight * 0.92,
               child: EstablishmentList(_establishment, _removeEstablishment),
+              //  child: HotelListView(),
             ),
           ],
         ),
