@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mybday_app/models/establishment.dart';
 
+import '../../hotel_app_theme.dart';
+
 class EstablishmentCard extends StatelessWidget {
   final Establishment establishment;
 
@@ -9,44 +11,54 @@ class EstablishmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      //clipBehavior: Clip.antiAliasWithSaveLayer,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       elevation: 2.0,
       color: Colors.white,
-      margin: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(8.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(4.0),
-              ),
-              child: Image(
-                height: 164,
-                fit: BoxFit.fitWidth,
-                image: NetworkImage(establishment.image),
-              ),
+        children: [
+          ClipRRect(
+            /*
+            borderRadius: const BorderRadius.all(
+              Radius.circular(6.0),
+            ),
+            */
+            child: Stack(
+              children: [
+                Container(
+                  height: 164,
+                  width: MediaQuery.of(context).size.width,
+                  child: AspectRatio(
+                    aspectRatio: 2.0,
+                    child: Image.network(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7gAuw2fdrz45GRotSZd3cbO-c3KSH-laIlQ&usqp=CAU',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(32.0),
+                      ),
+                      onTap: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.favorite_border,
+                          color: HotelAppTheme.buildLightTheme().primaryColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
-/*
-          ListTile(
-            leading: ClipOval(
-              child: Image.network(
-                establishment.image,
-                fit: BoxFit.cover,
-                width: 50,
-                height: 50,
-              ),
-            ),
-            title: Text(
-              establishment.name,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            subtitle: Text(
-              establishment.address,
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-          ),*/
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -95,6 +107,26 @@ class EstablishmentCard extends StatelessWidget {
     );
   }
 }
+
+/*
+          ListTile(
+            leading: ClipOval(
+              child: Image.network(
+                establishment.image,
+                fit: BoxFit.cover,
+                width: 50,
+                height: 50,
+              ),
+            ),
+            title: Text(
+              establishment.name,
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            subtitle: Text(
+              establishment.address,
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+          ),*/
 
 /*
 

@@ -1,8 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
+import 'HotelListView.dart';
 import 'components/establishment/establishment_list.dart';
+import 'hotel_app_theme.dart';
 import 'models/establishment.dart';
 
 class HomePage extends StatefulWidget {
@@ -106,6 +109,7 @@ class _HomePageState extends State<HomePage> {
               height: availableHeight * 0.08,
               child: Text('filtro'),
             ),
+            //HotelListView(),
             Container(
               height: availableHeight * 0.92,
               child: EstablishmentList(_establishment, _removeEstablishment),
