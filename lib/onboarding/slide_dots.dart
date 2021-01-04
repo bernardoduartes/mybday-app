@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mybday_app/constants/app_colors.dart';
 
-class OnboardingIndicator extends StatelessWidget {
+class SlideDots extends StatelessWidget {
   final bool _isActive;
 
-  OnboardingIndicator(this._isActive);
+  SlideDots(this._isActive);
 
   @override
   Widget build(BuildContext context) {

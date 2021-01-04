@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'components/onboarding/onboarding_page.dart';
 import 'home_page.dart';
+import 'onboarding/onboarding_page.dart';
 
 main() {
   runApp(MybdayApp());

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mybday_app/components/onboarding/onboarding_container.dart';
 import 'package:mybday_app/constants/app_assets.dart';
 
-import 'onboarding_indicator.dart';
+import 'onboarding_container.dart';
+import 'slide_dots.dart';
 
 class OnboardingPage extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   static const int _firstPageValue = 0;
   static const _kDuration = const Duration(milliseconds: 300);
 
-  int currentPageValue = 0;
+  int _currentPage = 0;
   String buttonText = 'SKIP';
 
   PageController pageController;
@@ -58,27 +58,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
         buttonText = 'Voltar';
       else
         buttonText = 'pular';
-      currentPageValue = page;
+      _currentPage = page;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final appBar = AppBar(
-      title: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Mybday APP',
-            style: TextStyle(
-              fontSize: 20 * MediaQuery.of(context).textScaleFactor,
-            ),
-          ),
-        ],
-      ),
-    );
-
-    //- MediaQuery.of(context).padding.top
     final availableHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -108,10 +93,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   for (int i = 0; i < _paginas.length; i++)
-                    if (i == currentPageValue) ...[
-                      OnboardingIndicator(true)
-                    ] else
-                      OnboardingIndicator(false),
+                    if (i == _currentPage)
+                      SlideDots(true)
+                    else
+                      SlideDots(false),
                 ],
               ),
             ),
@@ -132,15 +117,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         borderRadius: new BorderRadius.circular(
                           16.0,
                         ),
-                        //side: BorderSide(color: Colors.white),
                       ),
                       onPressed: () {
-                        if (currentPageValue + 1 < _paginas.length) {
+                        if (_currentPage + 1 < _paginas.length) {
                           pageController.nextPage(
                             duration: _kDuration,
                             curve: _kCurve,
                           );
-                          _getChangedPageAndMoveBar(++currentPageValue);
+                          _getChangedPageAndMoveBar(++_currentPage);
                         } else {
                           _callHomePage(context);
                         }
@@ -154,12 +138,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         buttonText,
                       ),
                       onPressed: () {
-                        if (currentPageValue > _firstPageValue) {
+                        if (_currentPage > _firstPageValue) {
                           pageController.previousPage(
                             duration: _kDuration,
                             curve: _kCurve,
                           );
-                          _getChangedPageAndMoveBar(--currentPageValue);
+                          _getChangedPageAndMoveBar(--_currentPage);
                         } else {
                           _callHomePage(context);
                         }
