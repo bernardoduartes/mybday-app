@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:mybday_app/dog_list.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import 'HotelListView.dart';
@@ -49,33 +50,25 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
 
-  List<Establishment> get _recentTransactions {
-    return _establishment.where((tr) {
-      return tr.date.isAfter(DateTime.now().subtract(
-        Duration(days: 7),
-      ));
-    }).toList();
+  _addEstablishment(double pixels) {
+    fetchFive();
   }
 
-  _addEstablishment(String title, double value, DateTime selectedDate) {
-    final newEstablishment = Establishment(
-      id: Random().nextDouble().toString(),
-      name: 'Trabuca Jardins',
-      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
-      image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7gAuw2fdrz45GRotSZd3cbO-c3KSH-laIlQ&usqp=CAU",
-      date: DateTime.now(),
-    );
+  fetchFive() {
+    for (int i = 0; i < 5; i++) {
+      final newEstablishment = Establishment(
+        id: Random().nextDouble().toString(),
+        name: 'Trabuca Jardins',
+        address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7gAuw2fdrz45GRotSZd3cbO-c3KSH-laIlQ&usqp=CAU",
+        date: DateTime.now(),
+      );
 
-    setState(() {
-      _establishment.add(newEstablishment);
-    });
-
-    Navigator.of(context).pop();
-  }
-
-  _removeEstablishment(String id) {
-    print('_removeEstablishment');
+      setState(() {
+        _establishment.add(newEstablishment);
+      });
+    }
   }
 
   @override
@@ -112,8 +105,9 @@ class _HomePageState extends State<HomePage> {
             //HotelListView(),
             Container(
               height: availableHeight * 0.92,
-              child: EstablishmentList(_establishment, _removeEstablishment),
+              child: EstablishmentList(_establishment, _addEstablishment),
               //  child: HotelListView(),
+              //child: Dogs(),
             ),
           ],
         ),

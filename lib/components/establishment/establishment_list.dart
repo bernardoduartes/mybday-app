@@ -4,15 +4,25 @@ import 'package:mybday_app/models/establishment.dart';
 
 class EstablishmentList extends StatelessWidget {
   final List<Establishment> establishments;
-  final void Function(String) onPressed;
+  final void Function(double) addEstablishment;
 
   EstablishmentList(
     this.establishments,
-    this.onPressed,
+    this.addEstablishment,
   );
 
   @override
   Widget build(BuildContext context) {
+    ScrollController _scrollController = new ScrollController();
+
+    _scrollController.addListener(() {
+      // print(_scrollController.position.pixels);
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        addEstablishment(_scrollController.position.pixels);
+      }
+    });
+
     return establishments.isEmpty
         ? LayoutBuilder(
             builder: (ctx, constraints) {
@@ -36,6 +46,7 @@ class EstablishmentList extends StatelessWidget {
             },
           )
         : ListView.builder(
+            controller: _scrollController,
             itemCount: establishments.length,
             itemBuilder: (ctx, index) {
               return Container(
