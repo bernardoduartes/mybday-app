@@ -39,7 +39,7 @@ class EstablishmentList extends StatelessWidget {
             itemCount: establishments.length,
             itemBuilder: (ctx, index) {
               return Container(
-                height: 316,
+                height: 328,
                 child: EstablishmentCard(
                   establishment: establishments[index],
                 ),

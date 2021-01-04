@@ -62,77 +62,89 @@ class EstablishmentCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              bottom: 1,
+              top: 16,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ClipOval(
+                  child: Image(
+                    height: 42.0,
+                    width: 42.0,
+                    fit: BoxFit.cover,
+                    image: NetworkImage(establishment.image),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        establishment.name,
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        establishment.address,
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(height: 5),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipOval(
-                      child: Image(
-                        height: 42.0,
-                        width: 42.0,
-                        fit: BoxFit.cover,
-                        image: NetworkImage(establishment.image),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            establishment.name,
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            establishment.address,
-                            style: Theme.of(context).textTheme.subtitle1,
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(height: 5),
                 Text(
-                  "Japonesa # rodízio",
+                  "japonesa * rodízio",
                   style: Theme.of(context).textTheme.subtitle1,
                 )
               ],
             ),
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'hotelData.subTxt',
-                style: TextStyle(
-                    fontSize: 14, color: Colors.grey.withOpacity(0.8)),
-              ),
-              const SizedBox(
-                width: 4,
-              ),
-              Icon(
-                Icons.map,
-                size: 12,
-                color: HotelAppTheme.buildLightTheme().primaryColor,
-              ),
-              Expanded(
-                child: Text(
-                  '100 km to city',
-                  overflow: TextOverflow.ellipsis,
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'hotelData.subTxt',
                   style: TextStyle(
                       fontSize: 14, color: Colors.grey.withOpacity(0.8)),
                 ),
-              ),
-            ],
+                const SizedBox(width: 4),
+                Icon(
+                  Icons.map,
+                  size: 12,
+                  color: HotelAppTheme.buildLightTheme().primaryColor,
+                ),
+                Expanded(
+                  child: Text(
+                    '100 km to city',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                  ),
+                ),
+              ],
+            ),
           ),
+          SizedBox(height: 8),
           Padding(
-            padding: const EdgeInsets.only(top: 4),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             child: Row(
               children: <Widget>[
                 SmoothStarRating(
