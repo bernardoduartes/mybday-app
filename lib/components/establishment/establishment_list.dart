@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mybday_app/components/establishment/establishment_card.dart';
 import 'package:mybday_app/models/establishment.dart';
-import 'package:intl/intl.dart';
 
 class EstablishmentList extends StatelessWidget {
   final List<Establishment> establishments;
@@ -38,35 +38,10 @@ class EstablishmentList extends StatelessWidget {
         : ListView.builder(
             itemCount: establishments.length,
             itemBuilder: (ctx, index) {
-              final tr = establishments[index];
-              return Card(
-                elevation: 5,
-                margin: EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 5,
-                ),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    child: Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: FittedBox(
-                        child: Text('R\$${tr.value}'),
-                      ),
-                    ),
-                  ),
-                  title: Text(
-                    tr.title,
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                  subtitle: Text(
-                    DateFormat('d MMM y').format(tr.date),
-                  ),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    color: Theme.of(context).errorColor,
-                    onPressed: () => onPressed(tr.id),
-                  ),
+              return Container(
+                height: 316,
+                child: EstablishmentCard(
+                  establishment: establishments[index],
                 ),
               );
             },

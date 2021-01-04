@@ -51,8 +51,7 @@ flutter:
     - assets/images/onboarding1.png
     - assets/images/onboarding2.png
     - assets/images/onboarding3.png
-
-
+    - assets/images/waiting.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -82,13 +81,13 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
-        - asset: assets/fonts/Montserrat-Regular.ttf
         - asset: assets/fonts/Montserrat-Bold.ttf
         - asset: assets/fonts/Montserrat-Medium.ttf
+        - asset: assets/fonts/Montserrat-Regular.ttf
           weight: 400
     - family: MontserratAlternates
       fonts:
-        - asset: assets/fonts/MontserratAlternates-Regular.ttf
-        - asset: assets/fonts/MontserratAlternates-Medium.ttf
         - asset: assets/fonts/MontserratAlternates-Bold.ttf
+        - asset: assets/fonts/MontserratAlternates-Medium.ttf
+        - asset: assets/fonts/MontserratAlternates-Regular.ttf
           weight: 400

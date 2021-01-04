@@ -14,80 +14,34 @@ class _HomePageState extends State<HomePage> {
   final List<Establishment> _establishment = [
     Establishment(
       id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
+      name: 'Trabuca Jardins',
+      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
+      image:
+          "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
       date: DateTime.now(),
     ),
     Establishment(
       id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
+      name: 'Trabuca Jardins',
+      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
+      image:
+          "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
       date: DateTime.now(),
     ),
     Establishment(
       id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
+      name: 'Trabuca Jardins',
+      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
+      image:
+          "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
       date: DateTime.now(),
     ),
     Establishment(
       id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      title: 'Compra ${Random().nextDouble().toString()}',
-      value: Random().nextDouble(),
+      name: 'Trabuca Jardins',
+      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
+      image:
+          "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
       date: DateTime.now(),
     ),
   ];
@@ -103,9 +57,11 @@ class _HomePageState extends State<HomePage> {
   _addEstablishment(String title, double value, DateTime selectedDate) {
     final newEstablishment = Establishment(
       id: Random().nextDouble().toString(),
-      title: title,
-      value: value,
-      date: selectedDate,
+      name: 'Trabuca Jardins',
+      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7gAuw2fdrz45GRotSZd3cbO-c3KSH-laIlQ&usqp=CAU",
+      date: DateTime.now(),
     );
 
     setState(() {
@@ -121,9 +77,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    bool isLandscape = mediaQuery.orientation == Orientation.landscape;
-
     final appBar = AppBar(
       title: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -149,13 +102,12 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              height: availableHeight * 0.05,
-              child: Center(
-                child: Text("filtro"),
-              ),
+              color: Colors.blue,
+              height: availableHeight * 0.08,
+              child: Text('filtro'),
             ),
             Container(
-              height: availableHeight * 0.95,
+              height: availableHeight * 0.92,
               child: EstablishmentList(_establishment, _removeEstablishment),
             ),
           ],
