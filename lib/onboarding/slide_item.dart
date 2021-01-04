@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mybday_app/constants/app_colors.dart';
+import 'package:mybday_app/onboarding/slider.dart';
 
-class OnboardingContainer extends StatelessWidget {
-  final String title;
-  final String subTitle;
-  final String imagePath;
-
-  OnboardingContainer({this.title, this.subTitle, this.imagePath});
+class SlideItem extends StatelessWidget {
+  final int index;
+  SlideItem(this.index);
 
   @override
   Widget build(BuildContext context) {
+    final _currentSlide = sliderArrayList[index];
+
     return LayoutBuilder(
       builder: (ctx, constraints) {
         return Column(
@@ -20,7 +20,7 @@ class OnboardingContainer extends StatelessWidget {
               margin: EdgeInsets.fromLTRB(30, 25, 30, 0),
               height: constraints.maxHeight * 0.60,
               child: Image.asset(
-                imagePath,
+                _currentSlide.sliderImageUrl,
                 fit: BoxFit.scaleDown,
               ),
             ),
@@ -33,7 +33,7 @@ class OnboardingContainer extends StatelessWidget {
                 height: constraints.maxHeight * 0.22,
                 margin: EdgeInsets.fromLTRB(70, 5, 70, 0),
                 child: Text(
-                  title,
+                  _currentSlide.sliderHeading,
                   textAlign: TextAlign.center,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
@@ -57,7 +57,7 @@ class OnboardingContainer extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    subTitle,
+                    _currentSlide.sliderSubHeading,
                     textAlign: TextAlign.center,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,

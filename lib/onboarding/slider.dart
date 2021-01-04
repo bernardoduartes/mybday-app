@@ -1,28 +1,32 @@
 import 'package:flutter/cupertino.dart';
-import 'package:mybday_app/constants/constants.dart';
+import 'package:mybday_app/constants/app_assets.dart';
 
 class Slider {
   final String sliderImageUrl;
   final String sliderHeading;
   final String sliderSubHeading;
 
-  Slider(
-      {@required this.sliderImageUrl,
-      @required this.sliderHeading,
-      @required this.sliderSubHeading});
+  Slider({
+    @required this.sliderImageUrl,
+    @required this.sliderHeading,
+    @required this.sliderSubHeading,
+  });
 }
 
 final sliderArrayList = [
   Slider(
-      sliderImageUrl: 'assets/images/slider_1.png',
-      sliderHeading: Constants.SLIDER_HEADING_1,
-      sliderSubHeading: Constants.SLIDER_DESC),
+      sliderImageUrl: AppAssets.onboarding1,
+      sliderHeading: "Comemore seu aniversário!",
+      sliderSubHeading:
+          "Descubra os melhores lugares para comemorar essa data pra lá de especial."),
   Slider(
-      sliderImageUrl: 'assets/images/slider_2.png',
-      sliderHeading: Constants.SLIDER_HEADING_2,
-      sliderSubHeading: Constants.SLIDER_DESC),
+      sliderImageUrl: AppAssets.onboarding2,
+      sliderHeading: "Convide a sua turma inteira",
+      sliderSubHeading:
+          "Convide toda a sua turma para celebrar essa data juntinho de você!"),
   Slider(
-      sliderImageUrl: 'assets/images/slider_3.png',
-      sliderHeading: Constants.SLIDER_HEADING_3,
-      sliderSubHeading: Constants.SLIDER_DESC),
+      sliderImageUrl: AppAssets.onboarding3,
+      sliderHeading: "E aproveite essa data especial",
+      sliderSubHeading:
+          "Divirta-se muito e aproveite as melhores promoções dos seus restaurantes e bares favoritos"),
 ];

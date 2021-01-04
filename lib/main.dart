@@ -27,7 +27,7 @@ class MybdayApp extends StatelessWidget {
     ));
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.pink,
         fontFamily: 'Montserrat Alternates',
         textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(

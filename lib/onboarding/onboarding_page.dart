@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mybday_app/constants/app_assets.dart';
-
-import 'onboarding_container.dart';
-import 'slide_dots.dart';
+import 'package:mybday_app/onboarding/slide_dots.dart';
+import 'package:mybday_app/onboarding/slide_item.dart';
+import 'package:mybday_app/onboarding/slider.dart';
 
 class OnboardingPage extends StatefulWidget {
   @override
@@ -15,50 +14,28 @@ class _OnboardingPageState extends State<OnboardingPage> {
   static const _kDuration = const Duration(milliseconds: 300);
 
   int _currentPage = 0;
-  String buttonText = 'SKIP';
+  final PageController _pageController = PageController(initialPage: 0);
 
-  PageController pageController;
-
-  final List<OnboardingContainer> _paginas = [
-    OnboardingContainer(
-      title: 'Comemore seu aniversário',
-      subTitle:
-          'Descubra os melhores lugares para comemorar essa data pra lá de especial.',
-      imagePath: AppAssets.onboarding1,
-    ),
-    OnboardingContainer(
-      title: 'Convide a sua turma inteira',
-      subTitle:
-          'Convide toda a sua turma para celebrar essa data juntinho de você!',
-      imagePath: AppAssets.onboarding2,
-    ),
-    OnboardingContainer(
-      title: 'E aproveite essa data especial',
-      subTitle:
-          'Divirta-se muito e aproveite as melhores promoções dos seus restaurantes e bares favoritos',
-      imagePath: AppAssets.onboarding3,
-    ),
-  ];
+  String buttonText = 'pular';
 
   @override
   void initState() {
     super.initState();
-    pageController = PageController();
   }
 
   @override
   void dispose() {
-    pageController.dispose();
     super.dispose();
+    _pageController.dispose();
   }
 
-  void _getChangedPageAndMoveBar(int page) {
+  void _getChangedPageAndMoveBar(int currentPage) {
     setState(() {
-      if (page > 0)
+      if (currentPage > 0)
         buttonText = 'Voltar';
       else
         buttonText = 'pular';
-      _currentPage = page;
+      _currentPage = currentPage;
     });
   }
 
@@ -74,13 +51,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
             Container(
               height: availableHeight * 0.70,
               child: PageView.builder(
-                controller: pageController,
-                itemCount: _paginas.length,
+                scrollDirection: Axis.horizontal,
+                controller: _pageController,
+                itemCount: sliderArrayList.length,
                 physics: BouncingScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  print('_paginas $index');
-                  return _paginas[index % _paginas.length];
-                },
+                itemBuilder: (BuildContext ctx, int i) => SlideItem(i),
                 onPageChanged: (int page) {
                   _getChangedPageAndMoveBar(page);
                 },
@@ -92,11 +67,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  for (int i = 0; i < _paginas.length; i++)
-                    if (i == _currentPage)
-                      SlideDots(true)
-                    else
-                      SlideDots(false),
+                  for (int i = 0; i < sliderArrayList.length; i++)
+                    if (i == _currentPage) SlideDots(true) else SlideDots(false)
                 ],
               ),
             ),
@@ -119,8 +91,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         ),
                       ),
                       onPressed: () {
-                        if (_currentPage + 1 < _paginas.length) {
-                          pageController.nextPage(
+                        if (_currentPage + 1 < sliderArrayList.length) {
+                          _pageController.nextPage(
                             duration: _kDuration,
                             curve: _kCurve,
                           );
@@ -138,8 +110,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         buttonText,
                       ),
                       onPressed: () {
+                        //TODO melhorar
                         if (_currentPage > _firstPageValue) {
-                          pageController.previousPage(
+                          _pageController.previousPage(
                             duration: _kDuration,
                             curve: _kCurve,
                           );
@@ -158,13 +131,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
       ),
     );
   }
-}
-
-Widget mainView(imagePath, title) {
-  return OnboardingContainer(
-    title: title,
-    imagePath: imagePath,
-  );
 }
 
 void _callHomePage(BuildContext context) {
