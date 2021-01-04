@@ -4,7 +4,7 @@ import 'constants/hex_color.dart';
 
 class HotelAppTheme {
   static TextTheme _buildTextTheme(TextTheme base) {
-    const String fontName = 'WorkSans';
+    const String fontName = 'Montserrat Alternates';
     return base.copyWith(
       headline1: base.headline1.copyWith(fontFamily: fontName),
       headline2: base.headline2.copyWith(fontFamily: fontName),
@@ -23,7 +23,7 @@ class HotelAppTheme {
   }
 
   static ThemeData buildLightTheme() {
-    final Color primaryColor = HexColor('#54D3C2');
+    final Color primaryColor = HexColor('#CF276B');
     final Color secondaryColor = HexColor('#54D3C2');
     final ColorScheme colorScheme = const ColorScheme.light().copyWith(
       primary: primaryColor,

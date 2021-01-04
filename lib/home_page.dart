@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   final List<Establishment> _establishment = [
     Establishment(
       id: Random().nextDouble().toString(),
-      name: 'Trabuca Jardins',
+      name: 'Akioh Sushi & Bar',
       address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
       image:
           "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     Establishment(
       id: Random().nextDouble().toString(),
       name: 'Trabuca Jardins',
-      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
+      address: 'Av. Conselheiro Nébias, 581 Boqueirão, Santos - SP',
       image:
           "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
       date: DateTime.now(),
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Mybday APP',
+            'mybday',
             style: TextStyle(
               fontSize: 20 * MediaQuery.of(context).textScaleFactor,
             ),

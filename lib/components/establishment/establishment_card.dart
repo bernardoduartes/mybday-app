@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mybday_app/constants/hex_color.dart';
 import 'package:mybday_app/models/establishment.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -86,12 +87,22 @@ class EstablishmentCard extends StatelessWidget {
                     children: [
                       Text(
                         establishment.name,
-                        style: Theme.of(context).textTheme.headline6,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: HexColor('#6D6D6D'),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat Alternates',
+                        ),
                       ),
                       SizedBox(height: 5),
                       Text(
                         establishment.address,
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: HexColor('#6D6D6D'),
+                          fontWeight: FontWeight.normal,
+                          fontFamily: 'Montserrat Alternates',
+                        ),
                       ),
                     ],
                   ),
@@ -120,23 +131,18 @@ class EstablishmentCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  'hotelData.subTxt',
-                  style: TextStyle(
-                      fontSize: 14, color: Colors.grey.withOpacity(0.8)),
-                ),
-                const SizedBox(width: 4),
                 Icon(
-                  Icons.map,
-                  size: 12,
+                  Icons.backpack,
+                  size: 18,
                   color: HotelAppTheme.buildLightTheme().primaryColor,
                 ),
-                Expanded(
-                  child: Text(
-                    '100 km to city',
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                SizedBox(width: 4),
+                Text(
+                  '1 presente, 3 promoções',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: HexColor('#CF276B'),
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -152,13 +158,16 @@ class EstablishmentCard extends StatelessWidget {
                   starCount: 5,
                   rating: 10.0,
                   size: 20,
-                  color: HotelAppTheme.buildLightTheme().primaryColor,
-                  borderColor: HotelAppTheme.buildLightTheme().primaryColor,
+                  color: HexColor('#6D6D6D'),
+                  borderColor: Colors.black,
                 ),
                 Text(
                   ' 10 Reviews',
                   style: TextStyle(
-                      fontSize: 14, color: Colors.grey.withOpacity(0.8)),
+                    fontSize: 12,
+                    color: HexColor('#6D6D6D'),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
