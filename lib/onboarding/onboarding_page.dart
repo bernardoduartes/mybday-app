@@ -32,7 +32,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void _getChangedPageAndMoveBar(int currentPage) {
     setState(() {
       if (currentPage > 0)
-        buttonText = 'Voltar';
+        buttonText = 'voltar   ';
       else
         buttonText = 'pular';
       _currentPage = currentPage;
@@ -79,15 +79,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 children: [
                   Container(
                     width: 200,
+                    height: 48,
                     child: RaisedButton(
                       color: Colors.pink[400],
                       textColor: Colors.white,
                       child: new Text(
-                        'Continuar',
+                        'próximo',
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(
-                          16.0,
+                          22.0,
                         ),
                       ),
                       onPressed: () {

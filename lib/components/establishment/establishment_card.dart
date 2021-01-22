@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybday_app/constants/hex_color.dart';
 import 'package:mybday_app/models/establishment.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -131,9 +132,9 @@ class EstablishmentCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Icon(
-                  Icons.backpack,
-                  size: 18,
+                SvgPicture.asset(
+                  "assets/icons/ticket.svg",
+                  height: 18,
                   color: HotelAppTheme.buildLightTheme().primaryColor,
                 ),
                 SizedBox(width: 4),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mybday_app/constants/app_colors.dart';
 import 'package:mybday_app/onboarding/slider.dart';
 
@@ -19,7 +20,7 @@ class SlideItem extends StatelessWidget {
             Container(
               margin: EdgeInsets.fromLTRB(30, 25, 30, 0),
               height: constraints.maxHeight * 0.60,
-              child: Image.asset(
+              child: SvgPicture.asset(
                 _currentSlide.sliderImageUrl,
                 fit: BoxFit.scaleDown,
               ),
