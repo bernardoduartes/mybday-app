@@ -1,12 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mybday_app/dog_list.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-import 'HotelListView.dart';
 import 'components/establishment/establishment_list.dart';
-import 'hotel_app_theme.dart';
 import 'models/establishment.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,41 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Establishment> _establishment = [
-    Establishment(
-      id: Random().nextDouble().toString(),
-      name: 'Akioh Sushi & Bar',
-      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
-      image:
-          "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      name: 'Trabuca Jardins',
-      address: 'Av. Conselheiro Nébias, 581 Boqueirão, Santos - SP',
-      image:
-          "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      name: 'Trabuca Jardins',
-      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
-      image:
-          "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
-      date: DateTime.now(),
-    ),
-    Establishment(
-      id: Random().nextDouble().toString(),
-      name: 'Trabuca Jardins',
-      address: 'Rua Haddock Lobo, 870 - Cerqueira César, São Paulo - SP',
-      image:
-          "https://www.agitossp.com.br/wp-content/uploads/2019/02/index_strip_321327_0_full.jpg",
-      date: DateTime.now(),
-    ),
-  ];
-
   _addEstablishment(double pixels) {
     fetchFive();
   }
@@ -66,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       );
 
       setState(() {
-        _establishment.add(newEstablishment);
+        Establishment.establishmentList.add(newEstablishment);
       });
     }
   }
@@ -105,7 +66,8 @@ class _HomePageState extends State<HomePage> {
             //HotelListView(),
             Container(
               height: availableHeight * 0.92,
-              child: EstablishmentList(_establishment, _addEstablishment),
+              child: EstablishmentList(
+                  Establishment.establishmentList, _addEstablishment),
               //  child: HotelListView(),
               //child: Dogs(),
             ),
